@@ -9,6 +9,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
 import numpy as np
+import pandas as pd
 
 # Load model at startup
 model = joblib.load("model.pkl")
@@ -21,10 +22,26 @@ class Features(BaseModel):
     Steps: float
     Accel_X: float
     Accel_Y: float
+    
 
 @app.post("/predict")
 def predict(features: Features):
-    # Convert to numpy array
-    data = np.array([[features.HR, features.Steps, features.Accel_X, features.Accel_Y]])
-    prediction = model.predict(data)[0]
+    # Convert to DataFrame with column names
+    df = pd.DataFrame([{
+        "HR": features.HR,
+        "Steps": features.Steps,
+        "Accel_X": features.Accel_X,
+        "Accel_Y": features.Accel_Y
+    }])
+    
+    # Make prediction
+    prediction = model.predict(df)[0]
+    
     return {"predicted_performance_score": prediction}
+
+#@app.post("/predict")
+#def predict(features: Features):
+#    # Convert to numpy array
+#    data = np.array([[features.HR, features.Steps, features.Accel_X, features.Accel_Y]])
+#    prediction = model.predict(data)[0]
+#    return {"predicted_performance_score": prediction}
