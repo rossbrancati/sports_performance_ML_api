@@ -44,7 +44,9 @@ In general, this project highlights how machine learning can be integrated into 
   "Accel_Y": 0.49
 }
 ```
-5. Click Execute, and you should see a predicted performance_score.
+5. Click Execute, and you should see a predicted performance_score in the Response Body:
+
+![response_body](https://github.com/rossbrancati/sports_performance_ML_api/blob/main/assets/result.png)
 
 ## Getting started:
 
