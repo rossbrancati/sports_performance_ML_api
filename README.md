@@ -6,6 +6,12 @@ It is built with **Fast API** for serving predictions and **Docker** for contane
 
 I have also included a Jupyter notebook file in this repo walking through feature selection, model selection, and training and testing. 
 
+## Table of Contents:
+- [Project overview](#project-overview)
+- [Tech stack](#tech-stack)
+- [Demo the model](#demo-model)
+- [Getting Started](#getting-started)
+
 ## Project Overview:
 - **Goal:** show end-to-end ML workflow from dataset → model training → API deployment.
 - **Domain:** sports science and wearable sensors
@@ -23,6 +29,22 @@ In general, this project highlights how machine learning can be integrated into 
 - **Uvicorn** ASGI server
 - **Docker** for contanerization
 - **Joblib** for model serialization
+
+## Demo model:
+1. Go to https://sports-perf-api.onrender.com/docs
+2. Click on the POST/predict endpoint (it will expand)
+3. Click on the "Try it out" button (top right of dropdown)
+4. Enter a JSON input that matches my schema, for example:
+
+```JSON
+{
+  "HR": 137,
+  "Steps": 5524,
+  "Accel_X": 1.37,
+  "Accel_Y": 0.49
+}
+```
+5. Click Execute, and you should see a predicted performance_score.
 
 ## Getting started:
 
